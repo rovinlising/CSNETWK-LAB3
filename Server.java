@@ -48,6 +48,7 @@ public class Server {
 
                     out.println(SERVER_NAME + "|" + SERVER_NUMBER);
 
+        // Error Handling
                 } catch (NumberFormatException e) {
                     System.out.println("Client sent a non-integer value.");
 
@@ -84,6 +85,6 @@ public class Server {
     }
 
     private static final int PORT = 6000;
-    private static final String SERVER_NAME = "Server - Remiel Orvin Lising & David Kyle Maglente";
+    private static final String SERVER_NAME = "Server of Remiel Lising & David Maglente";
     private static final int SERVER_NUMBER = 50;
 }
