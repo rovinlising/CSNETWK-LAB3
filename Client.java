@@ -27,16 +27,18 @@ public class Client {
 
             out.println(CLIENT_NAME + "|" + clientNumber);
 
+            // An out-of-range number shuts down the server
             if (clientNumber < 1 || clientNumber > 100) {
                 System.out.println("Client number " + clientNumber + " is out of range (1-100). Closing connection.");
                 return;
             }
 
+            // If there is no reply from the server, it means the server has closed the connection unexpectedly
             String reply = in.readLine();
             if (reply == null) {
                 throw new IOException("Server closed the connection unexpectedly.");
             }
-
+            // Throws IllegalArgumentException if the reply format is invalid (no '|' separator)
             int sep = reply.lastIndexOf("|");
             if (sep < 0) {
                 throw new IllegalArgumentException("Invalid reply format. Expected: 'name|number'.");
@@ -47,6 +49,7 @@ public class Client {
             int sum = clientNumber + serverNumber;
             System.out.println("Server Name: " + serverName + ", \nServer Number: " + serverNumber + ", \nClient Number: " + clientNumber + ", \nSum: " + sum);
         
+            // Error Handling
             } catch (NumberFormatException e) {
                 System.out.println("Server sent a non-integer value.");
             } catch (IllegalArgumentException e) {
@@ -76,7 +79,7 @@ public class Client {
 
     private static final String HOST = "localhost";
     private static final int PORT = 6000;
-    private static final String CLIENT_NAME = "Client - Remiel Orvin Lising & David Kyle Maglente";
+    private static final String CLIENT_NAME = "Client of Remiel Lising & David Maglente";
 }
 
 
